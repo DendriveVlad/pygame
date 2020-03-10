@@ -126,7 +126,6 @@ class Entity:
                 leave = 0
                 for dx in range(damage_pos[0], damage_pos[2]):
                     if ex == dx:
-                        print(damage_pos, ex, dx)
                         pox = True
                         leave = 1
                         break
@@ -138,7 +137,6 @@ class Entity:
                     for dy in range(damage_pos[1], damage_pos[-1]):
                         if ey == dy:
                             self.entities[self.entities.index(entity)][-1] -= damage
-                            print(damage_pos, ey, dy)
                             leave = 1
                             break
                     if leave:
