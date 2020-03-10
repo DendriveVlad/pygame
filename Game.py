@@ -121,8 +121,28 @@ class Entity:
 
     def entity_damage(self, damage, damage_pos):
         for entity in self.entities:
-            if damage_pos[0] <= entity[1][0] <= damage_pos[2]:
-                self.entities[self.entities.index(entity)][-1] -= damage
+            pox = False
+            for ex in range(entity[1][0], entity[1][0] + 50):
+                leave = 0
+                for dx in range(damage_pos[0], damage_pos[2]):
+                    if ex == dx:
+                        print(damage_pos, ex, dx)
+                        pox = True
+                        leave = 1
+                        break
+                if leave:
+                    break
+            if pox:
+                for ey in range(entity[1][1], entity[1][1] + 50):
+                    leave = 0
+                    for dy in range(damage_pos[1], damage_pos[-1]):
+                        if ey == dy:
+                            self.entities[self.entities.index(entity)][-1] -= damage
+                            print(damage_pos, ey, dy)
+                            leave = 1
+                            break
+                    if leave:
+                        break
             if self.entities[self.entities.index(entity)][-1] < 1:
                 del self.entities[self.entities.index(entity)]
 
